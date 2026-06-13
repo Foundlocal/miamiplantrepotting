@@ -67,7 +67,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== NAV ===== */
 .nav {
-  background: var(--green);
+  background: white;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -75,18 +75,22 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.08);
 }
 
 .nav-logo {
   font-size: 1.2rem;
   font-weight: 800;
-  color: white;
+  color: var(--green);
 }
 
 .nav-cta {
-  color: var(--pink);
-  font-weight: 700;
-  font-size: 0.85rem;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.82rem;
+  max-width: 220px;
+  text-align: right;
+  line-height: 1.3;
 }
 
 /* ===== HERO ===== */
@@ -406,6 +410,85 @@ section p {
   border: 0;
 }
 
+
+/* ===== BEFORE / AFTER ===== */
+.before-after {
+  background: var(--cream);
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.ba-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.ba-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-label-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem 0.5rem;
+}
+
+.ba-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.ba-badge.before {
+  background: rgba(22,75,53,0.1);
+  color: var(--green);
+}
+
+.ba-badge.after {
+  background: var(--pink);
+  color: white;
+}
+
+.ba-card-body {
+  padding: 0.5rem 1.2rem 1.2rem;
+}
+
+.ba-card-body h3 {
+  font-size: 0.95rem;
+  color: var(--green);
+  margin-bottom: 0.3rem;
+}
+
+.ba-card-body p {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .ba-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ba-card img {
+    height: 240px;
+  }
+}
+
 /* ===== FOOTER ===== */
 footer {
   background: #0f3a29;
@@ -497,7 +580,7 @@ footer a {
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo">🪴 Green Wizard</div>
-  <div class="nav-cta">Get a quote — send me a photo</div>
+  <div class="nav-cta">South Florida's trusted mobile houseplant repotting specialist</div>
 </nav>
 
 <!-- HERO -->
@@ -573,6 +656,39 @@ footer a {
         <h3>Done</h3>
         <p>Healthy plant. Clean space. Zero mess.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="container">
+    <h2>Real results, real plants</h2>
+    <p style="text-align:center; font-size:0.9rem; margin-top:-0.5rem;">Every visit I bring everything needed. You just open the door.</p>
+    <div class="ba-grid">
+
+      <div class="ba-card">
+        <img src="repotting_ner_aventura.jpg" alt="Anthurium plants before division and repotting — cramped in small pots" loading="lazy"/>
+        <div class="ba-label-bar">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-card-body">
+          <h3>Two Anthuriums, crowded in starter pots</h3>
+          <p>Root-bound and competing for space. Both plants were ready for division and a fresh soil mix.</p>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <img src="ChatGPT_Image_May_30__2026_at_11_51_44_AM.png" alt="Anthurium after division and repotting — healthy and thriving" loading="lazy"/>
+        <div class="ba-label-bar">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-card-body">
+          <h3>Anthurium — after division &amp; repotting</h3>
+          <p>Divided, upsized, and set in premium aroid mix. Blooming within weeks of the visit.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

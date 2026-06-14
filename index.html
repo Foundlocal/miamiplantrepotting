@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Plant Repotting Miami | Green Wizard | At-Home Houseplant Care</title>
+<meta name="description" content="I come to your home in Miami and repot your plants. Text me a photo and your address — I'll tell you what it needs and the price. Mobile plant repotting service Miami.">
+<meta name="keywords" content="mobile plant repotting Miami, at-home plant repotting Miami, houseplant repotting service Miami, indoor plant care service">
+<link rel="canonical" href="https://greenwizardmiami.com/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Green Wizard Miami",
+  "description": "Mobile houseplant repotting service. I come to your home in Miami-Dade and Broward for at-home plant repotting.",
+  "url": "https://greenwizardmiami.com",
+  "telephone": "+1-305-555-PLANT",
+  "email": "hello.greenwizard@gmail.com",
+  "address": {"@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US"},
+  "areaServed": ["Miami-Dade County", "Broward County"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+
+
+<style>
+:root {
+  --green: #164b35;
+  --green-light: #2d7a5f;
+  --pink: #c084b8;
+  --cream: #faf8f3;
+  --dark: #1a1a1a;
+  --gray: #5a5a5a;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+h3 { font-size: 1.05rem; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ===== NAV ===== */
+.nav {
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.nav-cta {
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.82rem;
+  max-width: 220px;
+  text-align: right;
+  line-height: 1.3;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, var(--green) 0%, #1a5c3a 100%);
+  color: white;
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.hero-highlight {
+  color: var(--pink);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.cta-primary {
+  background: var(--pink);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.cta-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 3.5rem 2rem;
+}
+
+section h2 {
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+section p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* ===== SERVICES ===== */
+.services {
+  background: white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.service {
+  background: var(--cream);
+  padding: 1.75rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--pink);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.service h3 {
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+
+.service p {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+/* ===== NEIGHBORHOODS ===== */
+.neighborhoods {
+  background: white;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how-works {
+  background: var(--cream);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.step {
+  text-align: center;
+}
+
+.step-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--pink);
+  margin-bottom: 0.5rem;
+}
+
+.step h3 {
+  color: var(--green);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+/* ===== EMAIL CAPTURE FORM ===== */
+.email-capture {
+  background: white;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: var(--cream);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 2px solid var(--pink);
+}
+
+.form-container h3 {
+  color: var(--green);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.form-container p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(22, 75, 53, 0.2);
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(192, 132, 184, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--pink);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.guide-output {
+  margin-top: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--pink);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.guide-output h4 {
+  color: var(--green);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.guide-output p, .guide-output li {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.guide-output ol {
+  margin-left: 1.5rem;
+}
+
+.guide-output li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== MAP ===== */
+.map-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.broward-dot {
+  background: #c084b8;
+  opacity: 0.7;
+}
+
+.dade-dot {
+  background: #164b35;
+  opacity: 0.5;
+}
+
+.service-map {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  background: #f7f5f0;
+  border: 2px solid rgba(22,75,53,0.12);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ===== BEFORE / AFTER ===== */
+.before-after {
+  background: var(--cream);
+}
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.ba-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.ba-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-label-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem 0.5rem;
+}
+
+.ba-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.ba-badge.before {
+  background: rgba(22,75,53,0.1);
+  color: var(--green);
+}
+
+.ba-badge.after {
+  background: var(--pink);
+  color: white;
+}
+
+.ba-card-body {
+  padding: 0.5rem 1.2rem 1.2rem;
+}
+
+.ba-card-body h3 {
+  font-size: 0.95rem;
+  color: var(--green);
+  margin-bottom: 0.3rem;
+}
+
+.ba-card-body p {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .ba-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ba-card img {
+    height: 240px;
+  }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0f3a29;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: rgba(255,255,255,0.6);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 640px) {
+  section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-container {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+  }
+}
+
+/* ===== MAP ===== */
+#service-map {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  border: 2px solid rgba(22, 75, 53, 0.15);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.map-neighborhood-label {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.map-neighborhood-label div {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  color: #0c3022;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.9);
+  pointer-events: none;
+}
+
+.map-county-label div {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">🪴 Green Wizard</div>
+  <div class="nav-cta">South Florida's trusted mobile houseplant repotting specialist</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <h1>Your plants need <span class="hero-highlight">fresh soil.</span><br>I come to you.</h1>
+    <p class="hero-sub">Mobile plant repotting in Miami. Text me a photo of your plant, your address, and what it needs. I'll send you exactly what it needs and the price.</p>
+    <a href="sms:+13058967081?body=Hi!%20Here's%20a%20photo%20of%20my%20plant.%20What%20does%20it%20need%20and%20how%20much?" class="cta-primary">💚 Get My Plant Quote</a>
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.75); max-width: 500px; margin-left: auto; margin-right: auto;">I bring all supplies and work on your patio, balcony, or outside space. Zero mess inside. Zero strangers in your home.</p>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="container">
+    <h2>What I offer</h2>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-icon">🌿</div>
+        <h3>Fresh Soil & Inspection</h3>
+        <p>Old compacted soil out. Fresh premium mix in. Root inspection for pests and health. Same pot or upsized if needed.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">🪴</div>
+        <h3>Root Inspection & Upsizing</h3>
+        <p>Plant outgrowing its pot? Roots circling or escaping? I inspect, trim if needed, and move it to the right size pot with fresh soil.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">🏢</div>
+        <h3>Office & Business Plant Maintenance</h3>
+        <p>Keep your lobby, office, or commercial space plants thriving. Scheduled repotting, soil refreshes, and health checks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEIGHBORHOODS -->
+<section class="neighborhoods">
+  <div class="container">
+    <h2>At-home plant repotting throughout Miami</h2>
+    <p style="text-align: center; margin-bottom: 0.5rem; font-size: 0.9rem;">Mobile houseplant repotting service covering all of Miami-Dade County and Broward County, FL.</p>
+    <p style="text-align: center; margin-bottom: 2rem; font-size: 0.85rem; color: #888;">Text your address and I'll confirm — if you're in South Florida, I'm probably already near you.</p>
+
+    <div id="service-map"></div>
+
+    <!-- Hidden SEO text listing all service areas -->
+    <p class="sr-only">Green Wizard Miami provides mobile plant repotting service in Miami-Dade County including: Brickell, Downtown Miami, Edgewater, Wynwood, Design District, Coconut Grove, Coral Gables, Miami Beach, Surfside, Bal Harbour, Hialeah, Doral, Little Havana, South Miami, Pinecrest, Palmetto Bay, Cutler Bay, Homestead, Kendall, Tamiami, Westchester, Flagami, Fontainebleau, Miami Lakes, Opa-locka, Hialeah Gardens. Also serving all of Broward County including Fort Lauderdale, Hollywood, Pompano Beach, Deerfield Beach, Coconut Creek, Coral Springs, Parkland, Margate, Plantation, Sunrise, Davie.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-works">
+  <div class="container">
+    <h2>4 simple steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Text me</h3>
+        <p>Send a photo of your plant and your location.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>I assess</h3>
+        <p>I tell you what it needs and the exact price.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>I come over</h3>
+        <p>I bring soil, tools, and tarps. You pick the time.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Done</h3>
+        <p>Healthy plant. Clean space. Zero mess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="container">
+    <h2>Real results, real plants</h2>
+    <p style="text-align:center; font-size:0.9rem; margin-top:-0.5rem;">Every visit I bring everything needed. You just open the door.</p>
+    <div class="ba-grid">
+
+      <div class="ba-card">
+        <img src="before-repotting.jpg" alt="Anthurium plants before division and repotting — cramped in small pots" loading="lazy"/>
+        <div class="ba-label-bar">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-card-body">
+          <h3>Two Anthuriums, crowded in starter pots</h3>
+          <p>Root-bound and competing for space. Both plants were ready for division and a fresh soil mix.</p>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <img src="after-repotting.png" alt="Anthurium after division and repotting — healthy and thriving" loading="lazy"/>
+        <div class="ba-label-bar">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-card-body">
+          <h3>Anthurium — after division &amp; repotting</h3>
+          <p>Divided, upsized, and set in premium aroid mix.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="email-capture">
+  <div class="container">
+    <h2>Ready to get your plants healthy?</h2>
+    <p style="text-align: center; margin-bottom: 2.5rem; font-size: 0.95rem;">Text me a photo of your plant or plants. Tell me what you see. I'll send you exactly what it needs and how much it costs.</p>
+    <div style="text-align: center;">
+      <a href="sms:+13058967081?body=Hi!%20Here's%20a%20photo%20of%20my%20plant(s).%20What%20does%20it%20need%20and%20how%20much?" class="cta-primary" style="font-size: 1rem; padding: 16px 36px;">💚 Text Me Your Plant</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Green Wizard Miami · Mobile plant repotting service · Miami-Dade & Broward</p>
+  <p style="margin-top: 0.5rem;">Email: hello.greenwizard@gmail.com</p>
+  <p style="margin-top: 0.5rem;">© 2025</p>
+</footer>
+
+<script>
+// Simple version - no lead magnet form
+</script>
+
+
+<!-- Leaflet JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function() {
+  var map = L.map('service-map', {
+    center: [25.80, -80.28],
+    zoom: 9,
+    zoomControl: true,
+    scrollWheelZoom: false,
+    attributionControl: true
+  });
+
+  // OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  var GREEN = '#164b35';
+  var PINK  = '#c084b8';
+
+  // ── BROWARD COUNTY polygon ──
+  var browardPoly = [
+    [26.3420, -80.0300],
+    [26.3420, -80.4900],
+    [26.0000, -80.4900],
+    [26.0000, -80.0300],
+    [26.3420, -80.0300]
+  ];
+
+  L.polygon(browardPoly, {
+    color: PINK,
+    weight: 2,
+    fillColor: PINK,
+    fillOpacity: 0.28
+  }).addTo(map).bindPopup('<b style="color:#9b5da8">Broward County</b><br>Full coverage — I come to you!');
+
+  // ── MIAMI-DADE COUNTY polygon ──
+  var miamidadePoly = [
+    [26.0000, -80.0300],
+    [26.0000, -80.4900],
+    [25.7500, -80.5500],
+    [25.5000, -80.5000],
+    [25.3300, -80.5500],
+    [25.2000, -80.6500],
+    [25.1000, -80.5000],
+    [25.1000, -80.3500],
+    [25.2000, -80.2500],
+    [25.3500, -80.2000],
+    [25.5000, -80.1500],
+    [25.7000, -80.1000],
+    [26.0000, -80.0300]
+  ];
+
+  L.polygon(miamidadePoly, {
+    color: PINK,
+    weight: 2,
+    fillColor: PINK,
+    fillOpacity: 0.28
+  }).addTo(map).bindPopup('<b style="color:#9b5da8">Miami-Dade County</b><br>Full coverage — I come to you!');
+
+  // ── NEIGHBORHOOD MARKERS ──
+  function makeIcon(label, color) {
+    return L.divIcon({
+      className: 'map-neighborhood-label',
+      html: '<div style="color:' + color + '; font-family: Poppins, sans-serif; font-weight:700; font-size:10px; text-shadow: 0 1px 2px rgba(255,255,255,0.95), 0 0 4px rgba(255,255,255,0.8);">' + label + '</div>',
+      iconAnchor: [40, 8]
+    });
+  }
+
+  // Miami-Dade neighborhoods
+  var dadePlaces = [
+    [25.7617, -80.1918, 'Downtown Miami'],
+    [25.7484, -80.2048, 'Brickell'],
+    [25.7983, -80.1900, 'Edgewater'],
+    [25.8024, -80.1998, 'Wynwood'],
+    [25.8120, -80.1910, 'Design District'],
+    [25.7280, -80.2380, 'Coconut Grove'],
+    [25.7215, -80.2684, 'Coral Gables'],
+    [25.7907, -80.1300, 'Miami Beach'],
+    [25.8647, -80.1228, 'Surfside'],
+    [25.8980, -80.1228, 'Bal Harbour'],
+    [25.8576, -80.2781, 'Hialeah'],
+    [25.8194, -80.3424, 'Doral'],
+    [25.7743, -80.2275, 'Little Havana'],
+    [25.7064, -80.2908, 'South Miami'],
+    [25.6645, -80.3074, 'Pinecrest'],
+    [25.6195, -80.3374, 'Palmetto Bay'],
+    [25.5808, -80.3451, 'Cutler Bay'],
+    [25.4687, -80.4776, 'Homestead'],
+    [25.6877, -80.4268, 'Kendall'],
+    [25.7538, -80.3573, 'Tamiami'],
+    [25.7562, -80.3025, 'Westchester'],
+    [25.7847, -80.2950, 'Flagami'],
+    [25.9201, -80.2878, 'Miami Lakes'],
+    [25.9009, -80.2504, 'Opa-locka'],
+    [25.8576, -80.1905, 'Miami Shores'],
+    [25.9342, -80.1694, 'Aventura']
+  ];
+
+  dadePlaces.forEach(function(p) {
+    L.marker([p[0], p[1]], { icon: makeIcon(p[2], '#0c3022'), interactive: false }).addTo(map);
+  });
+
+  // Broward neighborhoods
+  var browardPlaces = [
+    [26.1224, -80.1373, 'Fort Lauderdale'],
+    [26.0112, -80.1495, 'Hollywood'],
+    [26.0742, -80.1242, 'Dania Beach'],
+    [26.0576, -80.1454, 'Hallandale Beach'],
+    [26.2379, -80.1248, 'Pompano Beach'],
+    [26.3184, -80.1001, 'Deerfield Beach'],
+    [26.2561, -80.2123, 'Coconut Creek'],
+    [26.2695, -80.2573, 'Coral Springs'],
+    [26.3140, -80.2138, 'Parkland'],
+    [26.1256, -80.2331, 'Plantation'],
+    [26.1503, -80.2997, 'Sunrise'],
+    [26.0765, -80.2373, 'Davie'],
+    [26.1943, -80.1831, 'Lauderhill'],
+    [26.1626, -80.1668, 'Lauderdale Lakes'],
+    [26.2803, -80.2014, 'Margate'],
+    [26.3048, -80.2572, 'Tamarac']
+  ];
+
+  browardPlaces.forEach(function(p) {
+    L.marker([p[0], p[1]], { icon: makeIcon(p[2], '#5a1a6b'), interactive: false }).addTo(map);
+  });
+
+  // County name labels
+  function countyLabel(lat, lng, text, color) {
+    return L.marker([lat, lng], {
+      icon: L.divIcon({
+        className: 'map-county-label',
+        html: '<div style="font-family:Poppins,sans-serif; font-weight:800; font-size:14px; color:' + color + '; text-shadow: 0 1px 3px rgba(0,0,0,0.25); letter-spacing:1px; white-space:nowrap;">' + text + '</div>',
+        iconAnchor: [70, 8]
+      }),
+      interactive: false
+    });
+  }
+
+  countyLabel(26.22, -80.30, 'BROWARD COUNTY', '#9b5da8').addTo(map);
+  countyLabel(25.55, -80.42, 'MIAMI-DADE COUNTY', '#9b5da8').addTo(map);
+
+})();
+</script>
+
+</body>
+</html>
